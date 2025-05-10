@@ -22,7 +22,7 @@ headers = {
     "Content-Type": "application/json"
 }
 
-def chat():
+def chat(input):
     """
     Implements an interactive chat loop with the LLaMA 3.3 using Azure AI Foundry API.
     
@@ -31,12 +31,13 @@ def chat():
     """
     # Initialize conversation with a system message to define AI behavior
     messages = [{"role": "system", "content": "You will analyse the following message which describes a chore that someone did, and output a catagory of chore that it falls into. Your output should be a list in the format [chore completed, time taken, short description]. Chores completed should be a value from the list [cleaning, cooking, shopping, gardening, laundry, other]. The output should be in JSON format."}]
-    print("Input your chore.\n")
+    #print("Input your chore.\n")
     
 
     # Get user input and handle exit commands
-    user_input = input("You: ").strip()
     
+    #user_input = input("You: ").strip()
+    user_input = input
     # Add user message to conversation history
     messages.append({"role": "user", "content": user_input})
     

@@ -9,13 +9,13 @@ export default function Dashboard() {
   const household = localStorage.getItem('hhname');
   const handleSetTasks = async () => {
     try {
-      const response = await axios.post('http://localhost:8000/process-task', {text:task})
+      const response = await axios.post('http://localhost:8000/task', {text:task})
       const proceed = response.data.result
+      setTasks([...tasks, proceed])
     }
     catch (error) {
       console.error('Error processing task:', error)
     }
-    setTasks([...tasks, task])
     setTask('')
   }
   const goToAnalytics= () => {

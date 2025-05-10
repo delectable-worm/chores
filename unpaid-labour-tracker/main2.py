@@ -21,16 +21,17 @@ def process(task: Task):
     return {"result": result}
 
 
-
 LLAMA_API_URL = os.getenv("LLAMA_API_URL")
 LLAMA_API_KEY = os.getenv("LLAMA_API_KEY")
 
-data = chat()
-
+#data = chat()
+'''
 chore = data['chore completed']
 time = data['time taken']
 short_description = data['short description']
 name = "bob"
+'''
+
 
 # Connect to the database (or create it if it doesn't exist)
 conn = sqlite3.connect('chores_manager.db')
