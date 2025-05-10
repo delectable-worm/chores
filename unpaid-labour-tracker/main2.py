@@ -39,7 +39,7 @@ short_description = data['short description']
 name = "bob"
 '''
 
-suggestion()
+#suggestion()
 
 # Connect to the database (or create it if it doesn't exist)
 conn = sqlite3.connect('chores_manager.db')
