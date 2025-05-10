@@ -8,7 +8,7 @@ import json
 LLAMA_API_URL = os.getenv("LLAMA_API_URL")
 LLAMA_API_KEY = os.getenv("LLAMA_API_KEY")
 
-chat()
+data = chat()
 
 # Connect to the database (or create it if it doesn't exist)
 conn = sqlite3.connect('chores_manager.db')
