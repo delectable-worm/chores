@@ -8,7 +8,7 @@ import json
 LLAMA_API_URL = os.getenv("LLAMA_API_URL")
 LLAMA_API_KEY = os.getenv("LLAMA_API_KEY")
 
-data = chat()
+chat()
 
 # Connect to the database (or create it if it doesn't exist)
 conn = sqlite3.connect('chores_manager.db')
@@ -68,17 +68,6 @@ for row in cursor.execute('SELECT * FROM chore_types'):
 print("\nChores:")
 for row in cursor.execute('SELECT * FROM chores'):
     print(row)
-
-
-
-# Create tables
-cursor.execute('''
-CREATE TABLE IF NOT EXISTS llama_responses (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    prompt TEXT NOT NULL,
-    response TEXT NOT NULL
-);
-''')
 
 
 # Close the connection
