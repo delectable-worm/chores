@@ -2,6 +2,7 @@ import sqlite3
 import os
 import requests
 from llama import chat
+from llama import suggestion
 import json
 
 from fastapi import FastAPI
@@ -10,14 +11,20 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
+app.add_middleware(
+    CORSMiddleware, 
+    allow_origins=["*"], 
+    allow_methods=["*"], 
+    allow_headers=["*"],
+    allow_credentials=True
+    )
 
 class Task(BaseModel):
     text: str
     
 @app.post("/task")
 def process(task: Task):
-    result = chat()
+    result = chat(task.text)
     return {"result": result}
 
 
@@ -32,6 +39,7 @@ short_description = data['short description']
 name = "bob"
 '''
 
+suggestion()
 
 # Connect to the database (or create it if it doesn't exist)
 conn = sqlite3.connect('chores_manager.db')

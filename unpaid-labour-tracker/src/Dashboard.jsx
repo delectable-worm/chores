@@ -11,7 +11,7 @@ export default function Dashboard() {
     try {
       const response = await axios.post('http://localhost:8000/task', {text:task})
       const proceed = response.data.result
-      setTasks([...tasks, proceed])
+      setTasks([...tasks, task])
     }
     catch (error) {
       console.error('Error processing task:', error)
