@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 export default function Dashboard() {
   const navigate = useNavigate()
@@ -6,7 +7,14 @@ export default function Dashboard() {
   const [tasks, setTasks] = useState([])
   const person = localStorage.getItem('name');
   const household = localStorage.getItem('hhname');
-  const handleSetTasks = () => {
+  const handleSetTasks = async () => {
+    try {
+      const response = await axios.post('http://localhost:8000/process-task', {text:task})
+      const proceed = response.data.result
+    }
+    catch (error) {
+      console.error('Error processing task:', error)
+    }
     setTasks([...tasks, task])
     setTask('')
   }
