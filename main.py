@@ -1,18 +1,47 @@
 import sqlite3
 import psycopg2
-print("hello")
-try:
-    conn = psycopg2.connect(
-        host="zwwnhuuyyakhedbuiepf.supabase.co",
-        port=5432,
-        dbname="postgres",
-        user="postgres",
-        password="!ilovewomen!"
-    )
-    print("connected")
-except Exception as e:
-    print("Error connecting to the database:", e)
+import os
 
+import psycopg2
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env
+load_dotenv()
+
+# Fetch variables
+USER = os.getenv("user")
+PASSWORD = os.getenv("password")
+HOST = os.getenv("host")
+PORT = os.getenv("port")
+DBNAME = os.getenv("dbname")
+
+# Connect to the database
+try:
+    connection = psycopg2.connect(
+        user=USER,
+        password=PASSWORD,
+        host=HOST,
+        port=PORT,
+        dbname=DBNAME
+    )
+    print("Connection successful!")
+    
+    # Create a cursor to execute SQL queries
+    cursor = connection.cursor()
+    
+    # Example query
+    cursor.execute("SELECT NOW();")
+    result = cursor.fetchone()
+    print("Current Time:", result)
+
+    # Close the cursor and connection
+    cursor.close()
+    connection.close()
+    print("Connection closed.")
+
+except Exception as e:
+    print(f"Failed to connect: {e}")
 
 
 cur = conn.cursor()
