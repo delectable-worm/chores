@@ -7,6 +7,7 @@ to generate responses to user inputs in a conversational format.
 import os
 import requests
 from dotenv import load_dotenv
+import json
 
 # Load environment variables from .env file for secure API credentials storage
 load_dotenv()
